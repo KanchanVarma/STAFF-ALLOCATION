@@ -1,0 +1,306 @@
+<div class="container">
+  <div class="min-height">
+    <div style="background: #ffffff;">
+
+      <ngx-loading [show]="loading"></ngx-loading>
+      <mat-tab-group mat-align-tabs="left">
+        <mat-tab label="Request List">
+          <div class="card">
+            <div class="card-body min-height">
+              <div class="row">
+                <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover comm_table">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>
+                            <span>Project Code </span>
+                          </th>
+                          <th>
+                            <span>Employee Code </span>
+                          </th>
+                          <th>
+                            <span i18n="@@Resource Name"> </span>
+                          </th>
+                          <th>
+                            <span i18n="@@Requester"> </span>
+                          </th>
+                          <th>
+                            <span i18n="@@Type of request"> </span>
+                          </th>
+                          <th>
+                            <span i18n="@@Date submitted"> </span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of RequestList ">
+                          <td>
+                            {{item.variables.project_code.value }}
+                          </td>
+                          <td *ngIf="item.topicName!='finalise_request_resource_hire'">
+                            {{item.variables.employee_code.value }}
+                          </td>
+
+                          <td *ngIf="item.topicName=='finalise_request_resource_hire'">
+                            {{'---' }}
+                          </td>
+                          <td>
+                            <a *ngIf="item.topicName==='finalise_allocation_of_resource'"
+                              [routerLink]="['/dashboard/Resource/Approve']"
+                              [queryParams]="{allocation_request_type:item.variables.allocation_request_type.value,new_doa:item.variables.new_doa.value,new_release_date:item.variables.new_release_date.value,new_percentage_allocation:item.variables.new_percentage_allocation.value,requestor:item.variables.requestor.value,employee: item.variables.resource.value,topic: item.topicName ,date_submitted:item.variables.date_submitted.value,InstanceId:item.instanceID,RequestId:item.variables.requestId.value}">{{item.variables.resource.value}}
+                            </a>
+                            <a *ngIf="item.topicName==='finalise_release_resource'"
+                              [routerLink]="['/dashboard/Resource/Approve']"
+                              [queryParams]="{requestor:item.variables.requestor.value,employee: item.variables.resource.value ,topic: item.topicName ,date_submitted:item.variables.date_submitted.value,new_release_date:item.variables.new_release_date.value,release_date:item.variables.release_date.value,old_release_date:item.variables.old_release_date.value,InstanceId:item.instanceID,RequestId:item.variables.requestId.value }">{{item.variables.resource.value}}
+                            </a>
+                            <a *ngIf="item.topicName==='finalise_request_resource_hire'"
+                              [routerLink]="['/dashboard/Resource/NewHire/Approve']"
+                              [queryParams]="{requestor:item.variables.requestor.value,id: item.variables.newhire.value,topic:item.topicName,InstanceId:item.instanceID,RequestId:item.variables.requestId.value}">New
+                              Hire Request
+                            </a>
+                          </td>
+                          <td>{{item.variables.requestor.value}}</td>
+                          <td *ngIf="item.topicName=='finalise_allocation_of_resource'">
+                            Resource Allocation
+                          </td>
+                          <td *ngIf="item.topicName=='finalise_release_resource'">
+                            Resource Release
+                          </td>
+                          <td *ngIf="item.topicName=='finalise_request_resource_hire'">
+                            New Resource Hire
+                          </td>
+
+                          <td>{{item.variables.date_submitted.value | date:'dd/MM/yyyy':'+530'}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Project Closing in 15 Days">
+          <div class="card">
+            <div class="card-body min-height">
+              <div class="row">
+                <div class="col-lg-12">
+                  <table class="table table-striped table-hover comm_table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>
+                          <span i18n="@@Project Code"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Project name"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Start Date"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@End Date"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Client"> </span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of CloseProjects ">
+
+                        <td>{{item.project_code}}</td>
+                        <td>{{item.project_name}}</td>
+                        <td>{{item.start_date | date:'dd/MM/yyyy':'+530'}}</td>
+                        <td>{{item.end_date | date:'dd/MM/yyyy':'+530'}}</td>
+                        <td>{{item.client}} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Resource Releasing in 15 Days">
+          <div class="card">
+            <div class="card-body min-height">
+              <div class="row">
+                <div class="col-lg-12">
+                  <table class="table table-striped table-hover comm_table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Code</th>
+                        <th>
+                          <span i18n="@@Resource Name"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Project"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@% of allocation"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Date of Allotment"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Date of Release"> </span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of ReleasingResource ">
+                        <td>{{item.code}}</td>
+                        <td>
+                          <a [routerLink]="['/dashboard/Resource/Create']"
+                            [queryParams]="{employee: item.resource_id}">{{item.resource_name}}
+                          </a>
+                        </td>
+                        <td>{{item.project}}</td>
+                        <td class="right-celll">{{item.percentage_allocation | number : '1.2-2'}}</td>
+                        <td>{{item.date_of_allocation | date:'dd/MM/yyyy':'+530'}}</td>
+                        <td>{{item.date_of_release | date:'dd/MM/yyyy':'+530'}} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Project Starting in 15 Days">
+          <div class="card">
+            <div class="card-body min-height">
+              <div class="row">
+                <div class="col-lg-12">
+                  <table class="table table-striped table-hover comm_table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>
+                          <span i18n="@@Project Code"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Project name"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Start Date"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@End Date"> </span>
+                        </th>
+                        <th>
+                          <span i18n="@@Client"> </span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of StartProjects">
+
+                        <td>{{item.project_code}}</td>
+                        <td>{{item.project_name}}</td>
+                        <td>{{item.start_date | date:'dd/MM/yyyy':'+530'}}</td>
+                        <td>{{item.end_date | date:'dd/MM/yyyy':'+530'}}</td>
+                        <td>{{item.client}} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Availability Calendar">
+          <br>
+          <div class="row text-center">
+            <div class="col-md-4">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default mat-stroked-button" mwlCalendarPreviousView [view]="view"
+                  [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">&lt;</button>
+                <button type="button" class="btn btn-default mat-stroked-button" mwlCalendarNextView [view]="view"
+                  [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">&gt;</button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h3>{{ viewDate | date:'MMMM-yyyy':'+530' }}</h3>
+            </div>
+            <div class="col-md-4">
+              <span class="spanContent">&#8718;</span> Available Employee
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10 min-height">
+              <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" [cellTemplate]="customCellTemplate"
+                (dayClicked)="ShowList( $event.day.date)">
+              </mwl-calendar-month-view>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top">
+    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
+    <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <!-- <small style="margin: 5px" *ngIf="day.badgeTotal > 0">There are {{ day.events.length }} resources Availible on this
+    day</small> -->
+</ng-template>
+<button [hidden]="true" color="primary" type="submit" data-toggle="modal" data-target="#resourceList"
+  id="resourceListButton" resourceList> </button>
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="resourceList" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <span class="text-center">{{currentDate | date:'dd/MM/yyyy':'+530'}}</span>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <table class="table" frame="box">
+              <thead>
+                <tr>
+                  <th>Employee Code</th>
+                  <th>
+                    Employee Name </th>
+                    <th>
+                        Project Name
+                      </th>
+                  <th>
+                    <span i18n="@@Available From"> </span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of currentDateEvents">
+                  <th>{{item.code}}</th>
+                  <td>
+                    {{item.resourceName}}
+                  </td>
+                  <td [title]="item.projectName">
+                      {{item.projectName | regMatch}}
+                    </td>
+                  <td>{{item.AvailibleFrom | date:'dd/MM/yyyy':'+530'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+table{ width: 100%;}
+.example-card {
+    max-width: 100%;
+  }
+  .mat-form-field-infix input[type="text"]{ font-size: 13px !important;}
+  .mat-form-field{ font-size: 13px;}
+  table a{ color: #111;}
+  .example-form { padding: 10px;}

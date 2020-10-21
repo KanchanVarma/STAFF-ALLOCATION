@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <!-- Common -->
+      <trans-unit id="Home" datatype="html">
+          <target>Home</target>
+      </trans-unit>
+      <trans-unit id="Name" datatype="html">
+          <target>Name</target>
+      </trans-unit>
+      <trans-unit id="Select" datatype="html">
+          <target> Select </target>
+      </trans-unit>
+      <trans-unit id="Required" datatype="html">
+          <target> is required </target>
+      </trans-unit>
+      <trans-unit id="Search" datatype="html">
+          <target> Search</target>
+      </trans-unit>
+      <trans-unit id="Domain" datatype="html">
+          <target> Domain </target>
+      </trans-unit>
+      <trans-unit id="Clear" datatype="html">
+          <target> Clear</target>
+      </trans-unit>
+      <trans-unit id="Execute" datatype="html">
+          <target> Execute</target>
+      </trans-unit> 
+      <trans-unit id="Reset" datatype="html">
+          <target> Reset</target>
+      </trans-unit>
+      <trans-unit id="Confirm" datatype="html">
+          <target> Confirm</target>
+      </trans-unit>
+      <trans-unit id="Submit" datatype="html">
+          <target> Submit</target>
+      </trans-unit>
+      <trans-unit id="Cancel" datatype="html">
+          <target> Cancel</target>
+      </trans-unit>
+      <trans-unit id="Save" datatype="html">
+          <target> Save</target>
+      </trans-unit>
+      <trans-unit id="Close" datatype="html">
+          <target> Close</target>
+      </trans-unit>
+      <trans-unit id="Add" datatype="html">
+          <target> Add</target>
+      </trans-unit>
+      <trans-unit id="Show" datatype="html">
+          <target> Show</target>
+      </trans-unit>
+      <trans-unit id="RecordsPerPage" datatype="html">
+          <target> Records per page</target>
+      </trans-unit>
+      <trans-unit id="Declaration" datatype="html">
+        <target> Declaration</target>
+      </trans-unit>
+      <trans-unit id="Application" datatype="html">
+        <target> Application</target>
+      </trans-unit>
+      <trans-unit id="District" datatype="html">
+        <target> District</target>
+      </trans-unit>
+      <trans-unit id="State" datatype="html">
+       <target> State</target>
+      </trans-unit>
+      <trans-unit id="Pin" datatype="html">
+        <target> Pin</target>
+      </trans-unit>
+      <trans-unit id="Upload" datatype="html">
+        <target> Upload</target>
+      </trans-unit>
+      <trans-unit id="Edit" datatype="html">
+        <target> Edit </target>
+      </trans-unit>
+      <trans-unit id="View" datatype="html">
+        <target> View </target>
+      </trans-unit>
+          <trans-unit id="Update" datatype="html">
+        <target> Update </target>
+      </trans-unit>
+       <trans-unit id="Count" datatype="html">
+        <target> Count </target>
+      </trans-unit>
+        <trans-unit id="Email" datatype="html">
+        <target> Email </target>
+      </trans-unit>
+
+
+      <trans-unit id="Remark" datatype="html">
+        <target> Remark </target>
+      </trans-unit>
+
+      <trans-unit id="Project Start Date" datatype="html">
+        <target> Project Start Date </target>
+      </trans-unit>
+
+      <trans-unit id="Project End Date" datatype="html">
+        <target> Project End Date </target>
+      </trans-unit>
+      
+      <trans-unit id="GenerateReport" datatype="html">
+        <target> Generate Report </target>
+      </trans-unit> 
+ <trans-unit id="Job Description" datatype="html">
+        <target> Job Description </target>
+      </trans-unit>  
+        <trans-unit id="Select resource" datatype="html">
+        <target> Resource </target>
+      </trans-unit>  
+
+  <trans-unit id="Resource Count" datatype="html">
+        <target> Resource Count </target>
+      </trans-unit> 
+
+  <trans-unit id="Project" datatype="html">
+        <target> Project </target>
+      </trans-unit> 
+
+      <trans-unit id="Role Id" datatype="html">
+        <target> Role Id </target>
+      </trans-unit> 
+
+      <trans-unit id="Project name" datatype="html">
+        <target> Project </target>
+      </trans-unit> 
+
+      <trans-unit id="Resource Name" datatype="html">
+        <target> Name </target>
+      </trans-unit> 
+
+      <trans-unit id="Allocate Resource" datatype="html">
+        <target> Allocate </target>
+      </trans-unit> 
+
+        <trans-unit id="Project Assignment" datatype="html">
+        <target> Assign </target>
+      </trans-unit> 
+
+        <trans-unit id="Date of Allotment" datatype="html">
+        <target> Assignment Date </target>
+      </trans-unit> 
+   <trans-unit id="Location Id" datatype="html">
+        <target> Location Id </target>
+      </trans-unit>
+
+
+        <trans-unit id="Date of Release" datatype="html">
+        <target> Release Date </target>
+      </trans-unit> 
+
+      <trans-unit id="Onsite/offshore" datatype="html">
+        <target> Onsite/Offshore </target>
+      </trans-unit> 
+
+        <trans-unit id="Work Location City" datatype="html">
+        <target> Work Location City </target>
+      </trans-unit>
+
+        <trans-unit id="Work Location Area" datatype="html">
+        <target> Work Location Area </target>
+      </trans-unit>
+
+         <trans-unit id="Area" datatype="html">
+        <target> Area </target>
+      </trans-unit>
+  <trans-unit id="City" datatype="html">
+        <target> City </target>
+      </trans-unit>
+      <trans-unit id="Billing Rate" datatype="html">
+        <target> Billing Rate </target>
+      </trans-unit>
+
+
+         <trans-unit id="Grade" datatype="html">
+        <target> Grade </target>
+      </trans-unit>
+
+       <trans-unit id="Billing Type" datatype="html">
+        <target> Billing Type </target>
+      </trans-unit> 
+
+
+        <trans-unit id="Billing End date" datatype="html">
+        <target>Billing End date </target>
+      </trans-unit>
+  <trans-unit id="Project End date " datatype="html">
+        <target>Project End date </target>
+      </trans-unit> 
+
+<trans-unit id="Project Start date " datatype="html">
+        <target>Project Start date </target>
+      </trans-unit>
+<trans-unit id="Status" datatype="html">
+        <target> Status </target>
+      </trans-unit>
+
+        <trans-unit id="Billing Start date" datatype="html">
+        <target> Billing Start date</target>
+      </trans-unit>
+
+      <trans-unit id="Billing Status" datatype="html">
+        <target> Billing Status </target>
+      </trans-unit>
+
+<trans-unit id="% of allocation" datatype="html">
+        <target> % Allocation </target>
+      </trans-unit> 
+
+      <trans-unit id="Actual Allocation for Salary" datatype="html">
+        <target> Actual Allocation for Salary </target>
+      </trans-unit>
+
+      <trans-unit id="Allocation type" datatype="html">
+        <target> Allocation Type </target>
+      </trans-unit>
+
+ <trans-unit id="Exit date" datatype="html">
+        <target> Exit Date </target>
+      </trans-unit>
+
+      <trans-unit id="Recruiter Name" datatype="html">
+        <target> Recruiter Name </target>
+      </trans-unit>
+
+       <trans-unit id="Resident Location" datatype="html">
+        <target> Resident Location </target>
+      </trans-unit>
+
+       <trans-unit id="Sub Category" datatype="html">
+        <target> Sub Category </target>
+      </trans-unit>
+
+       <trans-unit id="Vertical" datatype="html">
+        <target> Vertical </target>
+      </trans-unit>
+
+       <trans-unit id="Employee Type" datatype="html">
+        <target> Employee Type </target>
+      </trans-unit>
+
+       <trans-unit id="Resource Status" datatype="html">
+        <target> Resource Status </target>
+      </trans-unit>
+   <trans-unit id="Mobile Number" datatype="html">
+        <target> Mobile Number </target>
+      </trans-unit>
+
+       <trans-unit id="NSEIT e-maild ID" datatype="html">
+        <target> Email </target>
+      </trans-unit>
+ <trans-unit id="DOB" datatype="html">
+        <target> Birth Date </target>
+      </trans-unit>
+
+       <trans-unit id="DOJ" datatype="html">
+        <target> Join Date </target>
+      </trans-unit>
+
+      <trans-unit id="Gender" datatype="html">
+        <target> Gender </target>
+      </trans-unit>
+
+       <trans-unit id="Relevant experience" datatype="html">
+        <target> Relevant experience </target>
+      </trans-unit>
+ <trans-unit id="Total experience" datatype="html">
+        <target> Total experience </target>
+      </trans-unit>
+
+<trans-unit id="DOA" datatype="html">
+        <target> Assignment Date </target>
+      </trans-unit>
+
+      <trans-unit id="Planned Release Date" datatype="html">
+        <target> Release Date </target>
+      </trans-unit>
+
+       <trans-unit id="Release Date" datatype="html">
+        <target> Release Date </target>
+      </trans-unit>
+
+      <trans-unit id="Employee Name" datatype="html">
+        <target> Name </target>
+      </trans-unit>
+
+        <trans-unit id="Employee Code" datatype="html">
+        <target>Emp Code </target>
+      </trans-unit>
+
+       <trans-unit id="Designation" datatype="html">
+        <target> Designation </target>
+      </trans-unit>
+
+       <trans-unit id="Experience" datatype="html">
+        <target> Experience </target>
+      </trans-unit>
+
+   <trans-unit id="Skills" datatype="html">
+        <target> Skills </target>
+      </trans-unit>
+
+       <trans-unit id="Primary Skills" datatype="html">
+        <target> Primary Skills </target>
+      </trans-unit>
+
+       <trans-unit id="Secondary Skills" datatype="html">
+        <target> Secondary Skills </target>
+      </trans-unit> 
+<trans-unit id="Employment Status" datatype="html">
+        <target> Employment Status </target>
+      </trans-unit> 
+
+      <trans-unit id="Employment Type" datatype="html">
+        <target> Employment Type </target>
+      </trans-unit> 
+
+      <trans-unit id="location" datatype="html">
+        <target> Location </target>
+      </trans-unit>
+
+      <trans-unit id="Available From date" datatype="html">
+        <target> Available from Date </target>
+      </trans-unit>
+
+        <trans-unit id="Available From" datatype="html">
+        <target> Available from </target>
+      </trans-unit>
+   <trans-unit id="Std Billing Rate" datatype="html">
+        <target> Std Billing Rate </target>
+      </trans-unit>
+         <trans-unit id="Min Billing Rate" datatype="html">
+        <target> Min Billing Rate </target>
+      </trans-unit>
+         <trans-unit id="Avg Billing Rate" datatype="html">
+        <target> Avg Billing Rate </target>
+      </trans-unit>
+         <trans-unit id="Percentage Allocation" datatype="html">
+        <target> Percentage Allocation </target>
+      </trans-unit>
+  <trans-unit id="Start Date" datatype="html">
+        <target> Start Date </target>
+      </trans-unit>
+       <trans-unit id="Nature of Project" datatype="html">
+        <target> Nature of Project </target>
+      </trans-unit>
+        <trans-unit id="End Date" datatype="html">
+        <target> End Date </target>
+      </trans-unit>
+  <trans-unit id="Client" datatype="html">
+        <target> Client </target>
+      </trans-unit>
+
+        <trans-unit id="Client Name" datatype="html">
+        <target> Client Name </target>
+      </trans-unit>
+
+        <trans-unit id="Delivery Owner" datatype="html">
+        <target> Delivery Owner </target>
+      </trans-unit>
+
+         <trans-unit id="Account Owner" datatype="html">
+        <target> Account Owner </target>
+      </trans-unit>
+      <trans-unit id="Finance Owner" datatype="html">
+        <target> Finance Owner </target>
+      </trans-unit>
+
+        <trans-unit id="Currency" datatype="html">
+        <target> Currency  </target>
+      </trans-unit>
+
+ <trans-unit id="Blended Billing Rate/Project Value" datatype="html">
+        <target> Blended Billing Rate/Project Value  </target>
+      </trans-unit>
+ 
+        <trans-unit id="Department" datatype="html">
+        <target> Department  </target>
+      </trans-unit>
+
+      <trans-unit id="Rating" datatype="html">
+        <target> Rating  </target>
+      </trans-unit>
+
+      <trans-unit id="Feedback" datatype="html">
+        <target> Feedback  </target>
+      </trans-unit>
+
+         <trans-unit id="Project Manager" datatype="html">
+        <target> Project Manager  </target>
+      </trans-unit>
+
+          <trans-unit id="Country" datatype="html">
+        <target> Country </target>
+      </trans-unit>
+       <trans-unit id="Project Area" datatype="html">
+        <target> Area </target>
+      </trans-unit>
+        <trans-unit id="Project City" datatype="html">
+        <target> City </target>
+      </trans-unit>
+ <trans-unit id="Project Code" datatype="html">
+        <target>Project Code </target>
+      </trans-unit>
+       <trans-unit id="Project Description" datatype="html">
+        <target> Description </target>
+      </trans-unit>
+
+        <trans-unit id="Current Resident Area" datatype="html">
+        <target> Current Resident Area </target>
+      </trans-unit>
+
+      <trans-unit id="Current Resident City" datatype="html">
+        <target> Current Resident City </target>
+      </trans-unit>
+
+        <trans-unit id="Education/Certification" datatype="html">
+        <target> Education/Certification </target>
+      </trans-unit>
+        <trans-unit id="Education" datatype="html">
+        <target> Education </target>
+      </trans-unit>
+
+        <trans-unit id="Certification" datatype="html">
+        <target> Certification </target>
+      </trans-unit>
+      
+        <trans-unit id="Level Of Expertise" datatype="html">
+        <target> Level Of Expertise </target>
+      </trans-unit>
+
+         <trans-unit id="Requester" datatype="html">
+        <target> Requester </target>
+      </trans-unit>
+        <trans-unit id="Type of request" datatype="html">
+        <target> Type of request </target>
+      </trans-unit>
+       <trans-unit id="Date submitted" datatype="html">
+        <target> Date submitted </target>
+      </trans-unit>
+ <trans-unit id="Username" datatype="html">
+        <target> Username </target>
+      </trans-unit>
+<trans-unit id="Password" datatype="html">
+        <target> Password </target>
+      </trans-unit>
+
+
+      <trans-unit id="Reporting Manager" datatype="html">
+        <target> Reporting Manager </target>
+      </trans-unit>
+
+      <trans-unit id="SrNo" datatype="html">
+        <target> SrNo </target>
+      </trans-unit>
+ 
+      <trans-unit id="Total experience at joining" datatype="html">
+        <target> Total experience at joining </target>
+      </trans-unit>
+ <trans-unit id="Relevant experience at joining" datatype="html">
+        <target> Relevant experience at joining </target>
+      </trans-unit>
+      <trans-unit id="Export to Excel" datatype="html">
+        <target> Export to Excel </target>
+      </trans-unit>
+      <trans-unit id="Search Project" datatype="html">
+        <target> Search Project </target>
+      </trans-unit>
+      <trans-unit id="Allocate" datatype="html">
+        <target> Allocate </target>
+      </trans-unit>
+       <trans-unit id="Allocation" datatype="html">
+        <target> Allocation </target>
+      </trans-unit>
+      <trans-unit id="Search Resource" datatype="html">
+        <target> Search Resource </target>
+      </trans-unit>
+      <trans-unit id="Release" datatype="html">
+        <target> Release </target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

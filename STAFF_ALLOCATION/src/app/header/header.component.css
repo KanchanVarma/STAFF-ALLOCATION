@@ -1,0 +1,20 @@
+header{ background: #fff;padding: 10px;}
+/* header i{ color: #efb918;font-size: 25px;} */
+.separator {
+    content: '';
+    display: inline-block;
+    background: rgb(116, 114, 114);
+    margin: 20px 5px;
+    height: 22px;
+    width: 1px;
+  }
+
+ .user{
+    color: #efb918;
+    font-size: 25px;
+ }
+  .material-icons{
+      color: red;
+      font-size: 25px
+      
+  }

@@ -1,0 +1,26 @@
+{
+    "cassandra" : { 
+        "ContactPoints":["172.25.8.59:9942"],
+        "Port":"",
+        "Username":"cassandra",
+        "Password":"cassandra",
+        "Datacenter":"datacenter1",
+        "Keyspace":"taskallocationspace"
+    },
+    "ftpHost":"",
+    "ftpUsername":"",
+    "ftpPassword":"",
+    "files":[
+        {
+            "fileName":"/",
+            "fileIdentifier":"",
+            "filePermissions":[]
+        },
+        {
+            "fileName":"",
+            "fileIdentifier":"",
+            "filePermissions":[]
+        }
+    ]
+}
+

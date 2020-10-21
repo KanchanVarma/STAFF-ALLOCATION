@@ -1,0 +1,189 @@
+<div class="container">
+    <div class="min-height">
+        <div class="card">
+            <div class="card-body">
+
+                <ngx-loading [show]="loading"></ngx-loading>
+                <form class="example-form" [formGroup]="DataForm">
+                    <h4 style="font-weight: bold">Request For New Hire</h4>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <mat-form-field class="example-full-width">
+                                <mat-select placeholder="Project" i18n-placeholder="@@Project" aria-label="Number"
+                                    matInput formControlName="project_name" [(ngModel)]="requestHire.project_name">
+                                    <mat-option *ngFor="let option of ProjectList" [value]="option.project">
+                                        {{option.project}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field class="example-full-width">
+                                <mat-select placeholder="City" i18n-placeholder="@@City" aria-label="Number" matInput
+                                    formControlName="city" [(ngModel)]="requestHire.city">
+                                    <mat-option *ngFor="let option of CityList" [value]="option.city">
+                                        {{option.city}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field class="example-full-width">
+                                <mat-select placeholder="Area" i18n-placeholder="@@Area" aria-label="Number" matInput
+                                    formControlName="area" [(ngModel)]="requestHire.area">
+
+                                    <mat-option *ngFor="let option of AreaList" [value]="option.area">
+                                        {{option.area}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <mat-form-field class="example-full-width">
+                                <mat-select placeholder="Primary Skills" i18n-placeholder="@@Primary Skills"
+                                    aria-label="Number" matInput formControlName="primary_skill"
+                                    [(ngModel)]="requestHire.primary_skill">
+
+                                    <mat-option *ngFor="let option of PrimarySkillList" [value]="option.primary_skill">
+                                        {{option.primary_skill}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="example-full-width">
+                                <mat-form-field>
+                                    <mat-select matInput placeholder="Secondary Skills"
+                                        i18n-placeholder="@@Secondary Skills" formControlName="secondary_skill"
+                                        [(ngModel)]="requestHire.secondary_skill">
+
+                                        <mat-option *ngFor="let option of SecondarySkillList"
+                                            [value]="option.secondary_skill">
+                                            {{option.secondary_skill}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="example-full-width">
+                                <mat-form-field>
+                                    <mat-select matInput placeholder="Domain" i18n-placeholder="@@Domain"
+                                        formControlName="domain_skill" [(ngModel)]="requestHire.domain_skill">
+                                        <mat-option *ngFor="let option of DomainList" [value]="option.domain">
+                                            {{option.domain}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="example-container">
+                                <mat-form-field>
+                                    <input size="4" type="number" matInput placeholder="Experience lower limit"
+                                        formControlName="lowerlimitsofExperience"
+                                        [(ngModel)]="requestHire.experience_lower" autocomplete="off">
+                                </mat-form-field>
+                                <control-messages class="validation-color"
+                                    [control]="DataForm.controls.lowerlimitsofExperience"
+                                    [parent]="'Lower limit'" [parent2]="'Upper limit'"></control-messages>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="example-container">
+                                <mat-form-field>
+                                    <input size="4" type="number" matInput placeholder="Experience Upper limit"
+                                        formControlName="upperlimitsofExperience"
+                                        [(ngModel)]="requestHire.experience_upper" autocomplete="off">
+                                </mat-form-field>
+                                <control-messages class="validation-color"
+                                    [control]="DataForm.controls.upperlimitsofExperience"
+                                    [parent]="'Upper limit'" [parent2]="'Lower limit'"></control-messages>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-4">
+                            <div class="example-full-width">
+                                <mat-form-field>
+                                    <mat-select placeholder="Experience"
+                                        i18n-placeholder="@@Experience" formControlName="year_of_experience" [(ngModel)]="requestHire.year_of_experience">
+                                        <mat-option value="1">1 yrs </mat-option>
+                                        <mat-option value="2">2 yrs</mat-option>
+                                        <mat-option value="3">3 yrs</mat-option>
+                                        <mat-option value="4">4 yrs</mat-option>
+                                        <mat-option value="5">5 yrs</mat-option>
+                                        <mat-option value="6">6 yrs</mat-option>
+                                        <mat-option value="7">7 yrs</mat-option>
+                                        <mat-option value="8">8 yrs</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div> 
+                        </div>-->
+                        <div class="col-lg-4">
+                            <div class="example-full-width">
+
+                                <mat-form-field>
+                                    <mat-select matInput placeholder="Designation" i18n-placeholder="@@Designation"
+                                        formControlName="designation" [(ngModel)]="requestHire.designation" required>
+                                        <!--  <mat-autocomplete #levelofexpertise="matAutocomplete"> -->
+                                        <mat-option [disabled]="role=='delivery'" *ngFor="let option of designationlist"
+                                            [value]="option">
+                                            {{option}}</mat-option>
+                                        <!--  </mat-autocomplete> -->
+                                    </mat-select>
+                                </mat-form-field>
+                                <control-messages class="validation-color" [control]="DataForm.controls.designation"
+                                    [parent]="'Designation'"></control-messages>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="example-container">
+                                <mat-form-field>
+                                    <input type="number" matInput placeholder="Count" i18n-placeholder="@@Count"
+                                        formControlName="count" [(ngModel)]="requestHire.count" autocomplete="off">
+                                </mat-form-field>
+                                <control-messages class="validation-color" [control]="DataForm.controls.count"
+                                    [parent]="'Count'"></control-messages>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="example-full-width">
+                                <div class="example-container">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Job Description"
+                                            i18n-placeholder="@@Job Description" formControlName="job_description"
+                                            [(ngModel)]="requestHire.job_description">
+                                    </mat-form-field>
+                                    <control-messages class="validation-color"
+                                        [control]="DataForm.controls.job_description" [parent]="'Job Description'">
+                                    </control-messages>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="example-container">
+                                <button mat-raised-button type="button" color="secondary"
+                                    (click)="fileInput.click()">Upload MRF <i class="fa fa-paperclip"
+                                        aria-hidden="true"></i></button>
+                                <p class="file_name"> {{ fileInput?.files[0]?.name }}</p>
+                                <input hidden type="file" #fileInput (change)="selectFile($event)" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <button type="button" class="col-lg-4" mat-stroked-button color="primary"
+                                (click)="RequestNewHire()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

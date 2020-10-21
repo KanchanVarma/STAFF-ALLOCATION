@@ -1,0 +1,43 @@
+body { font-size: 13px; }
+.example-full-width {
+    width: 100%;
+  }
+  
+  .example-full-width > *{
+    width: 100%;
+  }
+  .example-container > * {
+    width: 100%;
+  }
+  .mat-form-field-infix input[type="text"]{ font-size: 13px !important;}
+  .mat-form-field{ font-size: 13px;}
+  .example-form { padding: 10px;}
+  .min-height{ min-height: 500px;}
+
+  .my-class{
+    background-color: #fefea0;
+    font-style: italic;
+  }
+  .icon_mat{font-size: 15px;color: #666;}
+  .disableClick{
+    cursor: default;
+    color:#b1b1b1
+   }
+   
+   .popover { left: 20px !important; }
+
+
+   .underline {
+    text-decoration: underline;
+    color:blue;
+}
+
+.ui-grid-header-cell {
+  min-width: 50px  !important;
+  max-width: 50px !important;
+ }
+ 
+ .ui-grid-cell {
+ min-width: 200px !important;
+ max-width: 300px !important;
+ }

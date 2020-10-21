@@ -1,0 +1,302 @@
+<!-- <div class="container">
+  <div class="min-height">
+    <div class="card">
+      <div class="card-body">
+        <h4>View / update resource</h4>
+        <div class="table-responsive">
+        <table class="table table-striped table-hover comm_table">
+          <thead class="thead-dark">
+            <tr>
+              <th><span i18n="@@Employee Name"> </span></th>
+              <th><span i18n="@@Employee Code"> </span></th>
+              <th><span i18n="@@Resource Status"> </span></th>
+              <th><span i18n="@@Employment Type"> </span></th>
+              <th><span i18n="@@Primary Skills"> </span> </th>
+              <th><span i18n="@@Experience"> </span></th>
+              <th><span i18n="@@View"> </span></th>
+              <th><span i18n="@@Edit"> </span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pooja chaudhari </td>
+              <td>0356</td>
+              <td>-</td>
+              <td>-</td>
+              <td>Html5, css3, bootstrap, angular 7</td>
+              <td>4 </td>
+              <td><i class="fa fa-eye" aria-hidden="true"></i></td>
+              <td><i class="fa fa-edit" data-toggle="modal" data-target=".edit_info"></i></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade edit_info" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true"
+  aria-labelledby="edit_info">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="card">
+        <div class="card-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <form class="example-form">
+            <h4>Update Resource</h4>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Employee Name" i18n-placeholder="@@Employee Name">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Employee Code" i18n-placeholder="@@Employee Code">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Designation" i18n-placeholder="@@Designation">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Grade" i18n-placeholder="@@Grade">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="location" i18n-placeholder="@@location">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="gender" i18n-placeholder="@@Gender">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="DOJ" i18n-placeholder="@@DOJ">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="DOB" i18n-placeholder="@@DOB">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Total experience at joining" i18n-placeholder="@@Total experience at joining">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Relevant experience at joining" i18n-placeholder="@@Relevant experience at joining">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="NSEIT e-maild ID" i18n-placeholder="@@NSEIT e-maild ID">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Mobile Number" i18n-placeholder="@@Mobile Number">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <mat-form-field>
+                    <mat-select placeholder="Resource Status"  i18n-placeholder="@@Resource Status">
+                      <mat-option value="Active">Active</mat-option>
+                      <mat-option value="Inactive">Inactive</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <mat-form-field>
+                    <mat-select placeholder="Employee Type " i18n-placeholder="@@Employee Type">
+                      <mat-option value="Permanent Employee">Permanent Employee</mat-option>
+                      <mat-option value="Consultant">Consultant</mat-option>
+                      <mat-option value="Sub Consultant">Sub Consultant</mat-option>
+                      <mat-option value="Internship">Internship</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <mat-form-field>
+                    <mat-select placeholder="Vertical" i18n-placeholder="@@Vertical">
+                      <mat-option value="option 1">option 1</mat-option>
+                      <mat-option value="option 2">option 2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <mat-form-field>
+                    <mat-select placeholder="Sub Category" i18n-placeholder="@@Sub Category">
+                      <mat-option value="Option 1">Option 1</mat-option>
+                      <mat-option value="Option 2">Option 2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <mat-form-field>
+                    <mat-select placeholder="Domain"  i18n-placeholder="@@Domain">
+                      <mat-option value="Option 1">Option 1</mat-option>
+                      <mat-option value="Option 2">Option 2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <mat-form-field class="example-full-width">
+                  <input type="text" placeholder="Primary Skills" i18n-placeholder="@@Primary Skills" aria-label="Number" matInput [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <mat-form-field>
+                    <input matInput placeholder="Secondary Skills"  i18n-placeholder="@@Secondary Skills">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <mat-form-field class="example-full-width">
+                  <input type="text" placeholder="Level Of Expertise"  i18n-placeholder="@@Level Of Expertise" aria-label="Number" matInput
+                    [formControl]="myControl" [matAutocomplete]="levelofexpertise">
+                    <mat-autocomplete #levelofexpertise="matAutocomplete">
+                        <mat-option value="Beginner">Beginner</mat-option>
+                        <mat-option value="Intermidiate">Intermidiate</mat-option>
+                        <mat-option value="Expert">Expert</mat-option>
+                      </mat-autocomplete>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <mat-form-field>
+                    <input matInput placeholder="Education/Certification" i18n-placeholder="@@Education/Certification">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Current Resident City" i18n-placeholder="@@Current Resident City">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Std Billing Rate" i18n-placeholder="@@Std Billing Rate">
+                    <span matPrefix><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;</span>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Min  Billing Rate" i18n-placeholder="@@Min Billing Rate">
+                    <span matPrefix><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;</span>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Recruiter Name" i18n-placeholder="@@Recruiter Name">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Current Resident City" i18n-placeholder="@@Current Resident City">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-full-width">
+                  <mat-form-field>
+                    <input matInput placeholder="Resident Location" i18n-placeholder="@@Resident Location">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="example-container">
+                  <button class="btn btn-secondary" (click)="fileInput.click()">Upload Resume <i class="fa fa-paperclip"
+                      aria-hidden="true"></i></button>
+
+                  <input hidden type="file" #fileInput>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <button mat-stroked-button color="primary">Update</button>
+              </div>
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,15 @@
+body { font-size: 13px; }
+.example-full-width {
+    width: 100%;
+  }
+  
+  .example-full-width > *{
+    width: 100%;
+  }
+  .example-container > * {
+    width: 100%;
+  }
+  .mat-form-field-infix input[type="text"]{ font-size: 13px !important;}
+  .mat-form-field{ font-size: 13px;}
+ .example-form { padding: 10px;}
+ 

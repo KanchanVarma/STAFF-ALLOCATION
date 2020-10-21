@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_10mtfp1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.4">
+  <bpmn:collaboration id="Collaboration_1n9q4lt">
+    <bpmn:participant id="Participant_0gyd9ch" name="Staff Allocation(Resource Request)" processRef="new_hire_resource_request_process" />
+    <bpmn:participant id="Participant_0rnnynw" name="Staff Allocation(Allocate Resource)" processRef="allocate_resource_process" />
+    <bpmn:participant id="Participant_049sp4v" name="Staff Allocation(Release Resource)" processRef="release_resource_process" />
+  </bpmn:collaboration>
+  <bpmn:process id="new_hire_resource_request_process" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1i0xvwp">
+      <bpmn:lane id="Lane_0uxp38a" name="Delivery">
+        <bpmn:flowNodeRef>StartEvent_0zs7t2x</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_08sm3pe</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0nstpsd" name="RMG">
+        <bpmn:flowNodeRef>EndEvent_0ye5iby</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_16tgtbf</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:endEvent id="EndEvent_0ye5iby">
+      <bpmn:incoming>SequenceFlow_1j8hodx</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_16tgtbf" name="Finalise Request" camunda:type="external" camunda:topic="finalise_request_resource_hire">
+      <bpmn:incoming>SequenceFlow_11ljxth</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1j8hodx</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_0zs7t2x">
+      <bpmn:outgoing>SequenceFlow_1eei4cu</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1eei4cu" sourceRef="StartEvent_0zs7t2x" targetRef="ServiceTask_08sm3pe" />
+    <bpmn:sequenceFlow id="SequenceFlow_1j8hodx" sourceRef="ServiceTask_16tgtbf" targetRef="EndEvent_0ye5iby" />
+    <bpmn:serviceTask id="ServiceTask_08sm3pe" name="Create Request" camunda:type="external" camunda:topic="create_request_resource_hire">
+      <bpmn:incoming>SequenceFlow_1eei4cu</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_11ljxth</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_11ljxth" sourceRef="ServiceTask_08sm3pe" targetRef="ServiceTask_16tgtbf" />
+  </bpmn:process>
+  <bpmn:process id="allocate_resource_process" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0uu4crz">
+      <bpmn:lane id="Lane_0hpuh1b" name="Delivery">
+        <bpmn:flowNodeRef>ServiceTask_0skvsvh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1k8415m</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_0r70sjm" name="RMG">
+        <bpmn:flowNodeRef>EndEvent_1euf2s6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_06sgss9</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:endEvent id="EndEvent_1euf2s6">
+      <bpmn:incoming>SequenceFlow_0mirul7</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_06sgss9" name="Finalise Allocation" camunda:type="external" camunda:topic="finalise_allocation_of_resource">
+      <bpmn:incoming>SequenceFlow_1xlkcal</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0mirul7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0skvsvh" name="Allocate Resource" camunda:type="external" camunda:topic="allocate_resource">
+      <bpmn:incoming>SequenceFlow_0xrr9nm</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1xlkcal</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1k8415m">
+      <bpmn:outgoing>SequenceFlow_0xrr9nm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1xlkcal" sourceRef="ServiceTask_0skvsvh" targetRef="ServiceTask_06sgss9" />
+    <bpmn:sequenceFlow id="SequenceFlow_0mirul7" sourceRef="ServiceTask_06sgss9" targetRef="EndEvent_1euf2s6" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xrr9nm" sourceRef="StartEvent_1k8415m" targetRef="ServiceTask_0skvsvh" />
+  </bpmn:process>
+  <bpmn:process id="release_resource_process" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_0akrpih">
+      <bpmn:lane id="Lane_0ul3ely" name="Delivery">
+        <bpmn:flowNodeRef>ServiceTask_0779lbf</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_0m6yla6</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1v3z7qt" name="RMG">
+        <bpmn:flowNodeRef>EndEvent_0elols0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ServiceTask_0kuy8v6</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:endEvent id="EndEvent_0elols0">
+      <bpmn:incoming>SequenceFlow_05rinxb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ServiceTask_0kuy8v6" name="Finalise Allocation" camunda:type="external" camunda:topic="finalise_release_resource">
+      <bpmn:incoming>SequenceFlow_05ovll5</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_05rinxb</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="ServiceTask_0779lbf" name="Release Resource" camunda:type="external" camunda:topic="release_resource_request">
+      <bpmn:incoming>SequenceFlow_0n5djll</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_05ovll5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_0m6yla6">
+      <bpmn:outgoing>SequenceFlow_0n5djll</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_05ovll5" sourceRef="ServiceTask_0779lbf" targetRef="ServiceTask_0kuy8v6" />
+    <bpmn:sequenceFlow id="SequenceFlow_05rinxb" sourceRef="ServiceTask_0kuy8v6" targetRef="EndEvent_0elols0" />
+    <bpmn:sequenceFlow id="SequenceFlow_0n5djll" sourceRef="StartEvent_0m6yla6" targetRef="ServiceTask_0779lbf" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1n9q4lt">
+      <bpmndi:BPMNShape id="Participant_0gyd9ch_di" bpmnElement="Participant_0gyd9ch">
+        <dc:Bounds x="207" y="568" width="598" height="503" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0uxp38a_di" bpmnElement="Lane_0uxp38a">
+        <dc:Bounds x="237" y="568" width="568" height="253" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0nstpsd_di" bpmnElement="Lane_0nstpsd">
+        <dc:Bounds x="237" y="822" width="568" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0ye5iby_di" bpmnElement="EndEvent_0ye5iby">
+        <dc:Bounds x="689" y="922" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_16tgtbf_di" bpmnElement="ServiceTask_16tgtbf">
+        <dc:Bounds x="466" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_0zs7t2x_di" bpmnElement="StartEvent_0zs7t2x">
+        <dc:Bounds x="332" y="659" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1eei4cu_di" bpmnElement="SequenceFlow_1eei4cu">
+        <di:waypoint x="368" y="677" />
+        <di:waypoint x="466" y="677" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1j8hodx_di" bpmnElement="SequenceFlow_1j8hodx">
+        <di:waypoint x="566" y="940" />
+        <di:waypoint x="689" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_0rnnynw_di" bpmnElement="Participant_0rnnynw">
+        <dc:Bounds x="910" y="29" width="598" height="503" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0hpuh1b_di" bpmnElement="Lane_0hpuh1b">
+        <dc:Bounds x="940" y="29" width="568" height="253" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0r70sjm_di" bpmnElement="Lane_0r70sjm">
+        <dc:Bounds x="940" y="284" width="568" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1euf2s6_di" bpmnElement="EndEvent_1euf2s6">
+        <dc:Bounds x="1429" y="384" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_06sgss9_di" bpmnElement="ServiceTask_06sgss9">
+        <dc:Bounds x="1206" y="362" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0skvsvh_di" bpmnElement="ServiceTask_0skvsvh">
+        <dc:Bounds x="1206" y="99" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1k8415m_di" bpmnElement="StartEvent_1k8415m">
+        <dc:Bounds x="1072" y="121" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1xlkcal_di" bpmnElement="SequenceFlow_1xlkcal">
+        <di:waypoint x="1256" y="179" />
+        <di:waypoint x="1256" y="362" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0mirul7_di" bpmnElement="SequenceFlow_0mirul7">
+        <di:waypoint x="1306" y="402" />
+        <di:waypoint x="1429" y="402" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xrr9nm_di" bpmnElement="SequenceFlow_0xrr9nm">
+        <di:waypoint x="1108" y="139" />
+        <di:waypoint x="1206" y="139" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_049sp4v_di" bpmnElement="Participant_049sp4v">
+        <dc:Bounds x="911" y="568" width="597" height="503" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0ul3ely_di" bpmnElement="Lane_0ul3ely">
+        <dc:Bounds x="941" y="568" width="567" height="237" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0elols0_di" bpmnElement="EndEvent_0elols0">
+        <dc:Bounds x="1429" y="924" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0kuy8v6_di" bpmnElement="ServiceTask_0kuy8v6">
+        <dc:Bounds x="1206" y="902" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0779lbf_di" bpmnElement="ServiceTask_0779lbf">
+        <dc:Bounds x="1206" y="639" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_0m6yla6_di" bpmnElement="StartEvent_0m6yla6">
+        <dc:Bounds x="1072" y="661" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_05ovll5_di" bpmnElement="SequenceFlow_05ovll5">
+        <di:waypoint x="1256" y="719" />
+        <di:waypoint x="1256" y="902" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_05rinxb_di" bpmnElement="SequenceFlow_05rinxb">
+        <di:waypoint x="1306" y="942" />
+        <di:waypoint x="1429" y="942" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0n5djll_di" bpmnElement="SequenceFlow_0n5djll">
+        <di:waypoint x="1108" y="679" />
+        <di:waypoint x="1206" y="679" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Lane_1v3z7qt_di" bpmnElement="Lane_1v3z7qt">
+        <dc:Bounds x="941" y="805" width="567" height="269" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_08sm3pe_di" bpmnElement="ServiceTask_08sm3pe">
+        <dc:Bounds x="466" y="637" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_11ljxth_di" bpmnElement="SequenceFlow_11ljxth">
+        <di:waypoint x="516" y="717" />
+        <di:waypoint x="516" y="900" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,671 @@
+<div class="container">
+  <div class="min-height">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 col-md-12 col-xl-12">
+            <form class="example-form" [formGroup]="DataForm">
+              <h4 i18n="@@Search Project"> </h4>
+              <div class="row">
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <input matInput placeholder="Project name" i18n-placeholder="@@Project name"
+                        formControlName="projectName" [(ngModel)]="searchData.project_name" autocomplete="off">
+                      </mat-form-field>
+                      <control-messages class="validation-color" [control]="DataForm.controls.projectName" [parent]="'Project'"></control-messages>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker1" placeholder="Start date" i18n-placeholder="@@Start Date"
+                        formControlName="startDate" [(ngModel)]="searchData.start_date" autocomplete="off">
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker2" placeholder="End date" i18n-placeholder="@@End Date"
+                        formControlName="endDate" [(ngModel)]="searchData.end_date" autocomplete="off">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              <!-- </div>
+              <div class="row"> -->
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <mat-select placeholder="Nature of Project" i18n-placeholder="@@Nature of Project"
+                        formControlName="natureofProject" [(ngModel)]="searchData.nature">
+                        <mat-option value="">Select</mat-option>
+                        <mat-option value="9*5">9*5</mat-option>
+                        <mat-option value="24*5">24*5</mat-option>
+                        <mat-option value="24*6">24*6</mat-option>
+                        <mat-option value="24*7">24*7</mat-option>
+                        <!-- <control-messages class="validation-color" [control]="DataForm.controls.natureofProject" [parent]="'Nature oF Project'"></control-messages> -->
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <mat-select placeholder="Client" i18n-placeholder="@@Client" formControlName="client"
+                        [(ngModel)]="searchData.client">
+                        <mat-option value="">Select</mat-option>
+                        <mat-option *ngFor="let option of ClientList" [value]="option.client">{{option.client}}
+                        </mat-option>
+                        <!-- <control-messages class="validation-color" [control]="DataForm.controls.client" [parent]="'Client'"></control-messages> -->
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <mat-select placeholder="City" i18n-placeholder="@@City" formControlName="city"
+                        [(ngModel)]="searchData.city">
+                        <mat-option value="">Select</mat-option>
+                        <mat-option *ngFor="let option of CityList" [value]="option.city">{{option.city}}</mat-option>
+                        <!-- <control-messages class="validation-color" [control]="DataForm.controls.city" [parent]="'City'"></control-messages> -->
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              <!-- </div>
+              <div class="row"> -->
+                <div class="col-lg-4 col-xl-4 col-md-6 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                        <mat-select placeholder="Area" i18n-placeholder="@@Area" formControlName="area"
+                        [(ngModel)]="searchData.area">
+                        <mat-option value="">Select</mat-option>
+                        <!-- <control-messages class="validation-color" [control]="DataForm.controls.area" [parent]="'Area'"></control-messages> -->
+                        <mat-option *ngFor="let option of AreaList" [value]="option.area">{{option.area}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <input matInput placeholder="Project Code" i18n-placeholder="@@Project Code"
+                        formControlName="projectCode" [(ngModel)]="searchData.project_code" autocomplete="off">
+                      </mat-form-field>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-1">
+                  <button type="button" mat-stroked-button  color="primary" i18n="@@Search" (click)="onSearchP()">
+                  </button>
+                </div>&nbsp;
+                &nbsp;&nbsp;<div class="col-sm-2  col-lg-1">
+                  <button mat-raised-button  type="reset" color="secondary" (click)="hideGrid()" i18n="@@Reset"> </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <ngx-loading [show]="loading"></ngx-loading>
+    <div class="card" *ngIf="showGrid">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="row d-flex">
+                  <div class="col-lg-3 pt15">
+                    Page Size
+                  </div>
+                  <div class="col-lg-4 col-xl-4 col-md-4 col-sm-4">
+                    <mat-form-field class="example-full-width">
+                      <mat-select [(ngModel)]="itemsPerPage">
+                        <mat-option value="10">10</mat-option>
+                        <mat-option value="20">20</mat-option>
+                        <mat-option value="50">50</mat-option>
+                        <mat-option value=-1>All</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4"></div>
+              <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                <div class="pull-right text-right pt20 icon_img">
+                  <!-- <i class="fa fa-file-excel-o ex_size" aria-hidden="true" (click)="ExportToExcel()"></i> -->
+                  <img src="/assets/img/ico/ms-excel.png" (click)="ExportToExcel()" />
+                  <!-- <button class="col-lg-12" mat-raised-button color="secondary" i18n="@@Export to Excel" (click)="ExportToExcel()"> </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+              <div style="overflow-x:auto;">
+            <table class="table table-striped table-hover comm_table">
+              <thead class="thead-dark">
+                <tr>
+                  <th><span i18n="@@Project Code"> </span></th>
+                  <th><span i18n="@@Project name"> </span></th>
+                  <th><span i18n="@@Start Date"> </span></th>
+                  <th><span i18n="@@End Date"> </span></th>
+                  <th><span i18n="@@Nature of Project"> </span></th>
+                  <th><span i18n="@@Client"> </span></th>
+                  <th><span i18n="@@City"> </span></th>
+                  <th><span i18n="@@Area"> </span></th>
+                  <th><span i18n="@@Resource Count"> </span></th>
+                  <th *ngIf="role=='delivery' || role=='rm'"> <span i18n="@@Allocate Resource"> </span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of Projects | paginate :{id: 'pager1' ,itemsPerPage: itemsPerPage, currentPage: p  }">
+                    <td>{{item.project_code}}</td>
+                  <td [title]="item.project_name"><a [routerLink]="['/dashboard/Project/Create']"
+                      [queryParams]="{project_name: item.project_name,project_id: item.id}">{{item.project_name | regMatch}}
+                    </a>
+                  </td>
+                  <td>{{item.start_date | date:'dd/MM/yyyy':'+530'}}</td>
+                  <td>{{item.end_date | date:'dd/MM/yyyy':'+530'}}</td>
+                  <td>{{item.nature_of_project}}</td>
+                  <td>{{item.client}} </td>
+                  <td>{{item.city}} </td>
+                  <td>{{item.area}} </td>
+                  <td class="right-cell">{{item.resource_count}}</td>
+                  <td *ngIf="(role=='delivery' || role=='rm') " >
+                    <!-- <input class="" type="image" width="25%" src="/assets/img/allocation.png" (click)="AllocateResource(item)"> -->
+                    <!-- <button mat-raised-button color="secondary" type="button" (click)="AllocateResource(item)" class="test"><i class="fa fa-check" aria-hidden="true"></i>  </button> -->
+                    <i *ngIf="item.project_name!='COE'"  class="fa fa-user-plus" aria-hidden="true" (click)="AllocateResource(item)">
+                    </i>
+                  </td>
+                </tr>
+                <tr *ngIf="Projects.length == 0">
+                  <td colspan="10">No Data Found</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4">
+            <div class="pull-right">
+              <pagination-controls id='pager1' (pageChange)="page($event)"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Search Resource Modal -->
+<div class="modal fade" data-keyboard="false" data-backdrop="static"  id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" i18n="@@Search Resource">Search Resource</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="hideGrid1()" id="searchResourceDismiss">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="example-form" [formGroup]="DataForm1">
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="Employee Name" i18n-placeholder="@@Employee Name"
+                    formControlName="empName" [(ngModel)]="searchParams.employee_name" autocomplete="off">
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.empName" [parent]="'Employee Name'"></control-messages>-->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="Employee Code" i18n-placeholder="@@Employee Code"
+                    formControlName="empCode" [(ngModel)]="searchParams.employee_code" autocomplete="off">
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.empCode" [parent]="'Employee Code'"></control-messages>-->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                  <mat-form-field>
+                      <mat-select matInput placeholder="Designation" i18n-placeholder="@@Designation"
+                        formControlName="designation" [(ngModel)]="searchParams.designation" required>
+                        <!--  <mat-autocomplete #levelofexpertise="matAutocomplete"> -->
+                        <mat-option [disabled]="role=='delivery'" *ngFor="let option of designationlist" [value]="option">
+                          {{option}}</mat-option>
+                        <!--  </mat-autocomplete> -->
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-container">
+                <mat-form-field>
+                  <mat-select placeholder="Experience" i18n-placeholder="@@Experience"
+                    formControlName="yearsofExperience" [(ngModel)]="searchParams.years_of_experience">
+                    <mat-option value="1-2">1-2 yrs</mat-option>
+                    <mat-option value="2-4">2-4 yrs</mat-option>
+                    <mat-option value="5-7">5-7 yrs</mat-option>
+                    <mat-option value="8-10">8-10 yrs</mat-option>
+                    <!-- <control-messages class="validation-color" [control]="DataForm.controls.yearsofExperience" [parent]="'Experience'"></control-messages>-->
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Primary Skills" i18n-placeholder="@@Primary Skills" aria-label="Number"
+                  formControlName="primarySkills" matInput [(ngModel)]="searchParams.primary_skill">
+                  <mat-option *ngFor="let option of PrimarySkillList" [value]="option.primary_skill">
+                    {{option.primary_skill}}
+                  </mat-option>
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.primarySkills" [parent]="'Primary Skills'"></control-messages>-->
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Secondary Skills" i18n-placeholder="@@Secondary Skills"
+                  formControlName="secondarySkills" aria-label="Number" matInput
+                  [(ngModel)]="searchParams.secondary_skill">
+                  <mat-option *ngFor="let option of SecondarySkillList" [value]="option.secondary_skill">
+                    {{option.secondary_skill}}
+                  </mat-option>
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.secondarySkills" [parent]="'Secondary Skills'"></control-messages>-->
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-container">
+                <mat-form-field>
+                  <mat-select placeholder="Employment Status" i18n-placeholder="@@Employment Status"
+                    formControlName="empStatus" aria-label="Number" matInput
+                    [(ngModel)]="searchParams.employment_status">
+                    <mat-option *ngFor="let option of empStatus" [value]="option">
+                      {{option}}
+                    </mat-option>
+                    <!-- <control-messages class="validation-color" [control]="DataForm.controls.empStatus" [parent]="'Employment Status'"></control-messages>-->
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="City" i18n-placeholder="@@City" formControlName="location_city"
+                    [(ngModel)]="searchParams.location_city">
+                    <!-- <control-messages class="validation-color" [control]="DataForm.controls.location" [parent]="'location'"></control-messages>-->
+                    <mat-option *ngFor="let item of CityList" [value]="item.city">{{item.city}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Area" i18n-placeholder="@@Area" formControlName="location_area"
+                    [(ngModel)]="searchParams.location_area">
+                    <!-- <control-messages class="validation-color" [control]="DataForm.controls.location" [parent]="'location'"></control-messages>-->
+                    <mat-option *ngFor="let item of AreaList" [value]="item.area">{{item.area}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-container">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker5" placeholder="Available From date"
+                    [(ngModel)]="searchParams.available_from_date" i18n-placeholder="@@Available From date"
+                    formControlName="available_from_date" autocomplete="off">
+                  <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                  <mat-datepicker #picker5></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="Std Billing Rate" type="number" i18n-placeholder="@@Std Billing Rate"
+                    formControlName="stdbillingRate" [(ngModel)]="searchParams.std_billing_rate" autocomplete="off">
+                  <span matPrefix><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;</span>
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.stdbillingRate" [parent]="'Std Billing Rate '"></control-messages>-->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="Min Billing Rate" type="number" i18n-placeholder="@@Min Billing Rate"
+                    formControlName="minbillingRate" [(ngModel)]="searchParams.min_billing_rate" autocomplete="off">
+                  <span matPrefix><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;</span>
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.minbillingRate" [parent]="'Min Billing Rate '"></control-messages>-->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="Avg Billing Rate" type="number" i18n-placeholder="@@Avg Billing Rate"
+                    formControlName="avgbillingRate" [(ngModel)]="searchParams.avg_billig_rate" autocomplete="off">
+                  <span matPrefix><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;</span>
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.avgbillingRate" [parent]="'Avg Billing Rate '"></control-messages>-->
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                    <div class="example-full-width">
+                      <mat-form-field>
+                        <input matInput placeholder="Domain" i18n-placeholder="@@Domain" formControlName="domain">
+                         <control-messages class="validation-color" [control]="DataForm.controls.domain" [parent]="'Domain'"></control-messages> 
+                      </mat-form-field>
+                    </div>
+                  </div> -->
+
+            <!-- <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+                  <div class="example-full-width">
+                    <mat-form-field>
+                      <mat-select placeholder="Allocation Type" i18n-placeholder="@@Allocation type"
+                        formControlName="allocation_type" [(ngModel)]="searchParams.allocation_type">
+                        <mat-option value='unallocated'>unallocated</mat-option>
+                        <mat-option value='allocated'>allocated</mat-option>
+                        <mat-option value='partially_allocated'>partially_allocated</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div> -->
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-sm-2 col-md-2">
+              <button  mat-stroked-button color="primary" type="button" (click)="onSearchR()"><span
+                  i18n="@@Search"> </span>
+              </button>
+            </div>&nbsp;
+            &nbsp;&nbsp;
+            <div class="col-lg-2 col-sm-2 col-md-2">
+              <button  mat-raised-button type="reset" color="secondary" (click)="hideGrid1()" i18n="@@Reset"> </button>
+            </div>
+          </div>
+        </form>
+        <div class="row" *ngIf="showGrid1">
+          <div class="col-lg-12">
+              <div style="overflow-x:auto;">
+            <table class="table table-striped table-hover comm_table">
+              <thead class="thead-dark">
+                <tr>
+                  <!-- <th> -->
+                  <!-- <span i18n="@@Employee Code"> </span></th> -->
+                  <th><span i18n="@@Employee Name"> </span></th>
+                  <th><span i18n="@@Experience"> </span></th>
+                  <!-- <th><span i18n="@@Designation"> </span></th> -->
+                  <!-- <th><span i18n="@@Primary Skills"> </span></th> -->
+                  <!-- <th><span i18n="@@Secondary Skills"> </span></th> -->
+                  <th><span i18n="@@% of allocation"> </span></th>
+                  <th><span i18n="@@City"> </span></th>
+                  <th><span i18n="@@Area"> </span></th>
+                  <!-- <th><span i18n="@@Allocation type"> </span></th> -->
+                  <th><span i18n="@@Select"> </span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of Resource | paginate :{id: 'pager2' ,itemsPerPage:5 , currentPage: p2  }" >
+                  <!-- <td>{{item.employee_code}}</td> -->
+                  <td class="underline" popoverSize="large" [popover]="myPopover" [popoverOnHover]="true" >{{item.employee_name}}</td>
+                  <td class="right-celll">{{item.relevant_experience}}</td>
+                  <!-- <td>{{item.designation}} </td> -->
+                  <!-- <td>{{item.primary_skill}}</td> -->
+                  <!-- <td>{{item.secondary_skill}}</td> -->
+                  <td class="right-celll">{{item.percentage_allocation | number : '1.2-2'}} </td>
+                  <td>{{item.city}} </td>
+                  <td>{{item.area}} </td>
+                  <!-- <td>{{item.allocationType}}</td> -->
+                  <td>
+                    <i class="material-icons icon_mat green" data-dismiss="modal"
+                      (click)="AllocateResourceProject(item)">
+                      how_to_reg
+                    </i>
+                    <!-- <button mat-raised-button color="secondary" type="button"
+                          (click)="AllocateResource(item)" data-dismiss="modal" style="width: 100%" i18n="@@Select"> </button></td> -->
+                    <!-- <mat-icon style="cursor: pointer" data-dismiss="modal" (click)="AllocateResource(item)">
+                          assignment_turned_in</mat-icon> -->
+                    <popover-content #myPopover [closeOnMouseOutside]="true" [closeOnClickOutside]="true">
+                      Code : {{item.employee_code}}
+                      <br><br>
+                      Designation : {{item.designation}}
+                      <br><br>
+                      Primary Skill : {{item.primary_skill}}
+                      <br><br>
+                      Secondary Skill : {{item.secondary_skill}}
+                    </popover-content>
+                </tr>
+                <tr *ngIf="Resource.length == 0">
+                    <td colspan="9">No Data Found</td>
+                  </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+          <div class="col-sm-7"></div>
+          <div class="col-sm-5">
+            <pagination-controls id="pager2" (pageChange)="page2($event)"></pagination-controls>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" i18n="@@Close"> </button>
+          </div> -->
+    </div>
+  </div>
+</div>
+<button id="openModalButton" type="button" [hidden]="true" data-toggle="modal" data-target="#myModal">
+</button>
+<!-- Allocate Modal -->
+<button id="openAllocateModalButton" type="button" [hidden]="true" data-toggle="modal" data-target="#AllocateModal">
+</button>
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="AllocateModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Allocation Details</h4>
+        <button type="button" class="close" data-dismiss="modal" id="AllocationDismiss" (click)="hideGrid1()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="example-form" [formGroup]="DSForm" (ngSubmit)="AllocateSubmit()">
+          <!-- <h4 style="font-weight: bold">{{Heading +'\n:\n'+rname+'\n:\n'+pname}}</h4> -->
+          <!-- <h4 style="font-weight: bold">{{Heading +'\n:\n'+rname+'\n:\n'+pname}}</h4> -->
+          <ngx-loading [show]="loading"></ngx-loading>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <mat-form-field class="example-full-width">
+                <input type="text" readonly placeholder="resource" i18n-placeholder="@@Select resource"
+                  formControlName="resource" aria-label="Number" matInput name="selectResource"
+                  [(ngModel)]="request.employee_name">
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <mat-form-field class="example-full-width">
+                <input type="text" readonly placeholder="Project" i18n-placeholder="@@Project" aria-label="Number"
+                  formControlName="project" matInput name="project" [ngModel]="request.project_name  | regMatch" autocomplete="off" [title]="request.project_name">
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4">
+                <mat-form-field class="example-full-width">
+                  <input type="text" readonly placeholder="Project Code" i18n-placeholder="@@Project Code" aria-label="Number"
+                    formControlName="project_code" matInput name="projectCode" [(ngModel)]="request.project_code"  autocomplete="off">
+                </mat-form-field>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Onsite/Offshore" i18n-placeholder="@@Onsite/offshore"
+                  formControlName="onsiteOffshore" aria-label="Number" matInput 
+                  name="onsiteOffshore" [(ngModel)]="request.onsite_offshore" autocomplete="off">
+                  <mat-option value="">Select</mat-option>
+                 <mat-option value="onsite">Onsite</mat-option>
+                  <mat-option value="offshore">Offshore</mat-option>
+                </mat-select>
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.onsiteOffshore"
+                [parent]="'Onsite Offshore'"></control-messages>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Work Location City" i18n-placeholder="@@Work Location City"
+                    formControlName="location_city" name="billingRate" [(ngModel)]="request.city">
+                    <!-- <control-messages class="validation-color" [control]="DataForm.controls.worklocationCity" [parent]="'Work location City'"></control-messages>-->
+                    <mat-option *ngFor="let item of CityList" [value]="item.city">{{item.city}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.location_city"
+                [parent]="'Work location City'"></control-messages>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Work Location Area" i18n-placeholder="@@Work Location Area"
+                    formControlName="location_area" name="billingRate" [(ngModel)]="request.area">
+                    <mat-option *ngFor="let item of AreaList" [value]="item.area">{{item.area}}</mat-option>
+                  </mat-select>
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.worklocationArea" [parent]="'Work location Area'"></control-messages>-->
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.location_area"
+                [parent]="'Work location Area'"></control-messages>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="Billing Rate" i18n-placeholder="@@Billing Rate" name="billingRate"
+                    formControlName="billingRate" [(ngModel)]="request.billing_rate" autocomplete="off">
+                  <span matPrefix><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;</span>
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.billingRate" [parent]="'Billing Rate'"></control-messages>-->
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.billingRate"
+                [parent]="'Billing Rate'"></control-messages>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Billing Status" i18n-placeholder="@@Billing Status" name="billingStatus"
+                    formControlName="billingStatus" [(ngModel)]="request.billing_status">
+                    <!-- <control-messages class="validation-color" [control]="DataForm.controls.billingStatus" [parent]="'Billing Status'"></control-messages>-->
+                    <mat-option *ngFor="let item of billingStats" [value]="item">{{item}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.billingStatus"
+                [parent]="'Billing Status'"></control-messages>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="% Allocation" i18n-placeholder="@@% of allocation"
+                    formControlName="percentageofallocation" name="percentAllocation"
+                    [(ngModel)]="request.percentage_allocation" autocomplete="off">
+                  <!-- <control-messages class="validation-color" [control]="DataForm.controls.ofallocation" [parent]="'% of allocation'"></control-messages>-->
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.percentageofallocation"
+                [parent]="'% of allocation'"></control-messages>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput placeholder="Total Allocation" readonly formControlName="toatalpercentageofallocation"
+                    name="totalpercentAllocation" [ngModel]="request.total_percentage_allocation |number:'1.2-2'" autocomplete="off">
+
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker6" [min]="MINdate" [max]="MAXdate" placeholder="DOA" i18n-placeholder="@@DOA"
+                    [(ngModel)]="request.doa" formControlName="doa" autocomplete="off">
+                  <mat-datepicker-toggle matSuffix [for]="picker6"></mat-datepicker-toggle>
+                  <mat-datepicker #picker6></mat-datepicker>
+                  <!-- <input matInput placeholder="DOA" i18n-placeholder="@@DOA" name="doa" [(ngModel)]="request.doa" formControlName="doa"> -->
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.doa"
+                [parent]="'Date Of Assignment'"></control-messages>
+              </div>
+            </div>
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker7" [min]="MINdate" [max]="MAXdate" placeholder="Planned Release Date"
+                    i18n-placeholder="@@Planned Release Date" [(ngModel)]="request.planned_release_date"
+                    formControlName="planned_release_date" autocomplete="off">
+                  <mat-datepicker-toggle matSuffix [for]="picker7"></mat-datepicker-toggle>
+                  <mat-datepicker #picker7></mat-datepicker>
+                  <!-- <input matInput placeholder="Planned Release Date" i18n-placeholder="@@Planned Release Date" formControlName="planned_release_date"
+                              name="planned_release_date" [(ngModel)]="request.planned_release_date"> -->
+                </mat-form-field>
+                <control-messages class="validation-color" [control]="DSForm.controls.planned_release_date"
+                [parent]="'Planned Release Date'"></control-messages>
+              </div>
+            </div>
+            <!-- <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Primary Skill" i18n-placeholder="@@Primary Skills"
+                  formControlName="primarySkills" aria-label="Number" matInput [(ngModel)]="request.primary_skill">
+                  <mat-option *ngFor="let option of PrimarySkillListM" [value]="option">
+                    {{option}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> -->
+          </div>
+          <!-- <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+              <div class="example-container">
+                <mat-form-field>
+                  <mat-select placeholder="Secondary Skill" i18n-placeholder="@@Secondary Skills"
+                    formControlName="secondarySkills" [(ngModel)]="request.secondary_skill">
+                    <mat-option *ngFor="let option of SecondarySkillListM" [value]="option">
+                      {{option}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-lg-4 col-xl-4 col-md-4 col-sm-12">
+              <button mat-stroked-button color="primary" [disabled]="!DSForm.valid" type="button" (click)="AllocateSubmit()">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

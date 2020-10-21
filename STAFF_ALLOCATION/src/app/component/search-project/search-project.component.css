@@ -1,0 +1,29 @@
+
+  body { font-size: 13px; }
+.example-full-width {
+    width: 100%;
+  }
+  
+  .example-full-width > *{
+    width: 100%;
+  }
+  .example-container > * {
+    width: 100%;
+  }
+  .mat-form-field-infix input[type="text"]{ font-size: 13px !important;}
+  .mat-form-field{ font-size: 13px;}
+  .example-form { padding: 10px;}
+  .min-height{ min-height: 500px;}
+  .icon_img{padding-right: 10px}
+  .icon_img img{ width: 30px;}
+  .right-cell{text-align: right}
+
+  .icon_mat{font-size: 18px; padding-right: 5px;color: #666;}
+ 
+  .underline {
+    text-decoration: underline;
+    color:blue;
+}
+
+
+.popover { left: 20px !important; }

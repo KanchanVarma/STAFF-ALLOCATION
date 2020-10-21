@@ -1,0 +1,255 @@
+<div class="container">
+  <div class="min-height">
+    <div class="card">
+      <div class="card-body">
+        <form class="example-form">
+          <h4 style="font-weight: bold">Monthly Allocation Report</h4>
+
+          <ngx-loading [show]="loading"></ngx-loading>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput required readonly placeholder="Month Year" name="viewDate"
+                    [ngModel]="someDate | date:'MM-y'">
+                  <input matInput [hidden]='true' [matDatepicker]="picker" [(ngModel)]="someDate" name="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker (monthSelected)="monthSelected($event)" startView="multi-year">
+                  </mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- <div class="col-lg-4"> 
+              <div class="example-full-width">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker2" placeholder="End Date" i18n-placeholder="@@End Date" name="endDate">
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div> -->
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Project name" i18n-placeholder="@@Project name" name="project"
+                    [(ngModel)]="MonthlyAllocation.project">
+
+                    <mat-option *ngFor="let option of ProjectList" [value]="option.project">
+                      {{option.project}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="example-container">
+                <mat-form-field>
+                  <mat-select placeholder="Reporting Manager" i18n-placeholder="@@Reporting Manager"
+                    name="reportingManager" [(ngModel)]="MonthlyAllocation.reporting_manager">
+
+                    <mat-option *ngFor="let option of ProjectManagerList" [value]="option.name">{{option.name}}
+                    </mat-option>
+
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Department" i18n-placeholder="@@Department" name="department"
+                    [(ngModel)]="MonthlyAllocation.department">
+
+                    <mat-option *ngFor="let option of DepartmentList" [value]="option.department">
+                      {{option.department}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Client Name" i18n-placeholder="@@Client" name="client"
+                    [(ngModel)]="MonthlyAllocation.client">
+
+                    <mat-option *ngFor="let option of ClientList" [value]="option.client">
+                      {{option.client}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Work Location City" i18n-placeholder="@@City" name="city"
+                    [(ngModel)]="MonthlyAllocation.city">
+
+                    <mat-option *ngFor="let option of CityList" [value]="option.city">
+                      {{option.city}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Work Location Area" i18n-placeholder="@@Area" name="area"
+                    [(ngModel)]="MonthlyAllocation.area">
+
+                    <mat-option *ngFor="let option of AreaList" [value]="option.area">
+                      {{option.area}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="example-full-width">
+                <mat-form-field>
+                  <mat-select placeholder="Billing Status" i18n-placeholder="@@Billing Status" name="billing_status"
+                    [(ngModel)]="MonthlyAllocation.billing_status">
+                    <mat-option *ngFor="let option of billingStats" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-1">
+              <button class="search-button" [disabled]="!someDate" mat-stroked-button color="primary" (click)="onSearch()">Search</button>
+            </div>&nbsp;
+            &nbsp;<div class="col-sm-2 col-lg-6">
+              <button  mat-raised-button type="reset" color="secondary" i18n="@@Reset" (click)="hideGrid()"> </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <br>
+    <div class="card" *ngIf="showGrid">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="row">
+                  <div class="col-lg-3 pt15"> Page Size</div>
+                  <div class="col-lg-4">
+
+                    <mat-form-field class="example-full-width">
+                      <mat-select name="rowCount" [(ngModel)]="itemsPerPage">
+                        <mat-option value="10">10</mat-option>
+                        <mat-option value="20">20</mat-option>
+                        <mat-option value="50">50</mat-option>
+                        <mat-option value="-1">All</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+
+              </div>
+              <div class="col-sm-4"></div>
+              <div class="col-lg-4">
+                <div class="pull-right text-right pt20 icon_img">
+                  <!-- <i class="fa fa-file-excel-o ex_size" aria-hidden="true" (click)="ExportToExcel()"></i> -->
+                  <img class="point" src="/assets/img/ico/ms-excel.png" (click)="ExportToExcel()" />
+                  <!-- <button class="col-lg-12" mat-raised-button color="secondary" i18n="@@Export to Excel" (click)="ExportToExcel()"> </button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="table-responsive">
+            <table class="table table-striped table-hover comm_table">
+              <thead class="thead-dark">
+                <tr>
+                  <th><span i18n="@@SrNo"> </span></th>
+                  <th><span i18n="@@Employee Code"> </span></th>
+                  <th><span i18n="@@Status"> </span></th>
+                  <th><span i18n="@@Employee Name"> </span></th>
+                  <th><span i18n="@@Department"> </span></th>
+                  <th><span i18n="@@Project name"> </span></th>
+                  <th><span i18n="@@Project Code"> </span></th>
+                  <th><span i18n="@@DOA"> </span></th>
+                  <th><span i18n="@@Planned Release Date"> </span></th>
+                  <th><span i18n="@@% of allocation"> </span></th>
+                  <th><span i18n="@@Actual Allocation for Salary"> </span></th>
+                  <th><span i18n="@@Client Name"> </span></th>
+		  <th><span i18n="@@Project Manager"> </span></th>
+                  <th><span i18n="@@Delivery Owner"> </span></th>
+                  <th><span i18n="@@City"> </span></th>
+                  <th><span i18n="@@Area"> </span></th>
+                  <th><span i18n="@@Onsite/offshore"> </span></th>
+                  <th><span i18n="@@Billing Type"> </span></th>
+                  <th><span i18n="@@Billing Status"> </span></th>
+                  <th><span i18n="@@Billing Rate"> </span></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngIf="Report.length == 0">
+                      <td colspan="17">No Data Found</td>
+                    </tr>
+                <tr *ngFor="let item of Report | paginate :{itemsPerPage: itemsPerPage, currentPage: p  };let i=index ">
+                  <td>{{i+1}}</td>
+                  <td>{{item.emp_code}}</td>
+                  <td *ngIf="item.emp_status=='A'">Active</td>
+                  <td *ngIf="item.emp_status=='N'">Inactive</td>
+                  <td>{{item.emp_name}}</td>
+                  <td>{{item.dep_name}}</td>
+                  <td [title]="item.proj_name">{{item.proj_name | regMatch}}</td>
+                  <td>{{item.proj_code}}</td>
+                  <td>{{item.doa | date:'dd/MM/yyyy':'+530' }}</td>
+                  <td>{{item.planned_release_date | date:'dd/MM/yyyy':'+530' }}</td>
+                  <td class="right-celll">{{item.alloc_percent | number : '1.2-2'}}</td>
+                  <td class="right-celll">{{item.sal_alloc | number : '1.2-2'}}</td>
+                  <td>{{item.client_name}}</td>
+		  <td>{{item.proj_manager}}</td>
+                  <td>{{item.del_owner}}</td>
+                  <td>{{item.loc_city}}</td>
+                  <td>{{item.loc_area}}</td>
+                  <td>{{item.onsite_offshore}}</td>
+                  <td>{{item.bill_type}}</td>
+                  <td>{{item.bill_status}}</td>
+                  <td class="right-celll">{{item.bill_rate | currency:'INR':'symbol':'3.2-2'}}</td>
+                </tr>
+                <!-- <tr *ngFor="let item of Report | paginate :{itemsPerPage: 10, currentPage: p  }"> -->
+
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <div class="pull-right">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

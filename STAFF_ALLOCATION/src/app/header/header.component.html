@@ -1,0 +1,20 @@
+<header>
+<div class="container">
+  <div class="pull-left"><img src="assets/img/nseit_logo.png"></div>
+  <div class="pull-right">
+      <button  type="button" mat-flat-button [matMenuTriggerFor]="menu"><span class="user"><i class="fa fa-user-circle-o"  aria-hidden="true"></i></span> {{username}}
+         <span class="separator"></span>
+        <i class="material-icons" (click)="LogOut()">
+          power_settings_new
+          </i>
+          
+         </button>
+      <mat-menu #menu="matMenu">
+        <!-- <button mat-menu-item type="button" (click)="LogOut()"></button> -->
+      </mat-menu>
+    
+    <p></div>
+  <div class="clearfix"></div>
+</div>
+
+</header><div class="clearfix"></div>

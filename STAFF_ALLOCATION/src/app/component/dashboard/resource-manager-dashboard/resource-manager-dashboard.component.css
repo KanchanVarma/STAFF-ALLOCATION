@@ -1,0 +1,7 @@
+.mat-stroked-button:not([disabled]) {
+    border-color: rgb(128, 117, 113);
+}
+
+.spanContent{
+    color: #2d8a42;
+}

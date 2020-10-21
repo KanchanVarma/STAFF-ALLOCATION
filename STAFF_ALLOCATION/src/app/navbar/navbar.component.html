@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu> -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"   (clickOutside)="Reset('home')" [ngClass]="(activeClass=='home')?'active':''"> <a class="nav-link"
+            (click)="onClick('home')" href="#" [routerLink]="['/dashboard']">
+            <mat-icon>home</mat-icon>
+          </a> </li>
+          <!-- <button mat-button class="nav-link dropdown-toggle" (click)="onClick('Project Management')"  href="#" id="navbarDropdown" [matMenuTriggerFor]="menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Project Management</button>
+          <mat-menu #menu="matMenu">
+            <button [routerLink]="['/dashboard/Project/Create']" mat-menu-item>Create
+              Project</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu> -->
+          
+        <li class="nav-item dropdown" *ngIf="role!='hr'" (clickOutside)="Reset('Project Management')" [ngClass]="(activeClass=='Project Management')?'active':''">
+          <a class="nav-link dropdown-toggle"  (click)="onClick('Project Management')" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Project Management
+          </a>
+          <div class="dropdown-menu" *ngIf="hideClass" aria-labelledby="navbarDropdown"
+            [ngClass]="(activeClass=='Project Management'  && showDD)?'show':''">
+            <a *ngIf="role=='finance' || role=='rm'" class="dropdown-item" href="#" [routerLink]="['/dashboard/Project/Create']"
+              (click)="dropdown('Project Management')" [ngClass]="(hideClass=='create Project')?'hide':''">Create
+              Project</a>
+
+
+            <a *ngIf="role!='hr'" class="dropdown-item" href="#" [routerLink]="['/dashboard/Project/Search']"
+              (click)="dropdown('Project Management')" [ngClass]="(hideClass=='Search Project')?'hide':''">Search
+              Project</a>
+
+          </div>
+        </li>
+
+
+
+
+        <li *ngIf="role!='hr' && mobile" class="pipe">
+          <div> |</div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="role!='finance'"
+          [ngClass]="(activeClass=='Resource Management')?'active':''"  (clickOutside)="Reset('Resource Management')">
+          <a class="nav-link dropdown-toggle" (click)="onClick('Resource Management')" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Resource Management
+          </a>
+          <div class="dropdown-menu" *ngIf="hideClass" aria-labelledby="navbarDropdown"
+            [ngClass]="(activeClass=='Resource Management' && showDD)?'show':''">
+            <a *ngIf="role=='hr' || role=='rm'" class="dropdown-item" href="#" [routerLink]="['/dashboard/Resource/Create']"
+              (click)="dropdown('Resource Management')" [ngClass]="(hideClass=='Create Resource')?'hide':''">Create Resource
+            </a>
+
+
+            <a class="dropdown-item" href="#" [routerLink]="['/dashboard/Resource/Search']"
+              (click)="dropdown('Resource Management')">Search Resource</a>
+            <a *ngIf="role=='delivery'" class="dropdown-item" href="#"
+              [routerLink]="['/dashboard/Resource/NewHire/Request']" (click)="dropdown('Resource Management')">New Hire</a>
+
+          </div>
+        </li>
+
+        <li *ngIf="role=='rm' && mobile">
+          <div class="pipe"> |</div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="role=='rm' || role=='finance'"
+          [ngClass]="(activeClass=='Reports')?'active':''"  (clickOutside)="Reset('Reports')">
+          <a class="nav-link dropdown-toggle" (click)="onClick('Reports')" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reports
+          </a>
+          <div class="dropdown-menu max_Width" *ngIf="hideClass" aria-labelledby="navbarDropdown"
+            [ngClass]="(activeClass=='Reports'  && showDD)?'show':''">
+            <a *ngIf="role=='rm'  || role=='finance'" class="dropdown-item" href="#"
+              [routerLink]="['/dashboard/MonthAllocationRpt']" (click)="dropdown('Reports')">Monthly Allocation
+              Report</a>
+          </div>
+        </li>
+
+        <li *ngIf="role=='super_admin' && mobile">
+          <div class="pipe"> |</div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="role=='super_admin'"
+          [ngClass]="(activeClass=='Adminstration'  && showDD)?'active':''" (clickOutside)="Reset('Adminstration')">
+          <a class="nav-link dropdown-toggle" (click)="onClick('Adminstration')" href="#" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Administration
+          </a>
+          <div class="dropdown-menu" *ngIf="hideClass" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" [routerLink]="['/master/client']" (click)="dropdown('Adminstration')">Client</a>
+            <a class="dropdown-item" href="#" [routerLink]="['/master/primarySkill']"
+              (click)="dropdown('Adminstration')">Primary Skill</a>
+            <a class="dropdown-item" href="#" [routerLink]="['/master/secondarySkill']"
+              (click)="dropdown('Adminstration')">Secondary Skill</a>
+            <a class="dropdown-item" href="#" [routerLink]="['/master/department']"
+              (click)="dropdown('Adminstration')">Department</a>
+
+            <a class="dropdown-item" href="#" [routerLink]="['/master/location']"
+              (click)="dropdown('Adminstration')">Location</a>
+            <a class="dropdown-item" href="#" [routerLink]="['/master/domain']" (click)="dropdown('Adminstration')">Domain</a>
+            <a class="dropdown-item" href="#" [routerLink]="['/master/user']" (click)="dropdown('Adminstration')">User</a>
+
+          </div>
+        </li>
+
+      </ul>
+     
+    </div>
+  </div>
+  
+</nav>
+
+
+ 

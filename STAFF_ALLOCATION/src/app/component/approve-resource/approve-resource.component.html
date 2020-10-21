@@ -1,0 +1,228 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="DSForm" class="example-form">
+        <h4 style="font-weight: bold">Approve Allocation</h4><br>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <input type="text" readonly placeholder="Resource Name" i18n-placeholder="@@Resource Name"
+              formControlName="resource" aria-label="Number" matInput name="empID" name="selectResource" [(ngModel)]="mRequest.employee_name">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <input type="text" readonly placeholder="Project" i18n-placeholder="@@Project" aria-label="Number"
+              formControlName="project" matInput [matAutocomplete]="auto" name="project" [(ngModel)]="mRequest.project_name">
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of options" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <input type="text" readonly placeholder="Designation" i18n-placeholder="@@Designation" aria-label="Number"
+              formControlName="designation" matInput name="Designation" [(ngModel)]="mRequest.designation">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="example-container">
+              <mat-form-field>
+                <input type="text" matInput readonly placeholder="Project Code" i18n-placeholder="@@Project Code"
+                formControlName="project_code"  name="projectCode" [(ngModel)]="mRequest.project_code">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input matInput readonly placeholder="Job Description" i18n-placeholder="@@Job Description"
+                formControlName="job_description" name="job_description" [(ngModel)]="mRequest.description">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="example-container">
+              <mat-form-field>
+                <input type="text" matInput placeholder="% of allocation" i18n-placeholder="@@% of allocation"
+                  formControlName="percentageofallocation" name="percentAllocation"
+                  [(ngModel)]="mRequest.percentage_allocation">
+              </mat-form-field>
+              <control-messages class="validation-color" [control]="DSForm.controls.percentageofallocation"
+              [parent]="'% of allocation'"></control-messages>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="example-container">
+              <mat-form-field>
+                <input matInput readonly placeholder="Billing Type" i18n-placeholder="@@Billing Type"
+                formControlName="billingType" name="billing_type" [(ngModel)]="mRequest.billing_type">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input readonly matInput placeholder="Billing Rate" i18n-placeholder="@@Billing Rate" name="billingRate"
+                formControlName="billingRate"  [(ngModel)]="mRequest.billing_rate">
+                <span matPrefix><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;</span>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input readonly matInput placeholder="Billing Status" i18n-placeholder="@@Billing Status"
+                formControlName="billingStatus"  name="billingStatus" [(ngModel)]="mRequest.billing_status">
+              </mat-form-field>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input readonly matInput placeholder="City" i18n-placeholder="@@City" name="workLocation"
+                formControlName="location_city"  [(ngModel)]="mRequest.city">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input readonly matInput placeholder="Area" i18n-placeholder="@@Area" name="clientPlace"
+                formControlName="location_area"  [(ngModel)]="mRequest.area">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <mat-form-field class="example-full-width">
+              <input matInput type="text" readonly placeholder="Onsite/offshore" i18n-placeholder="@@Onsite/offshore"
+              formControlName="onsiteOffshore"  name="onsiteOffshore" [(ngModel)]="mRequest.onsite_offshore">
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="example-container">
+              <mat-form-field>
+                <input matInput readonly [matDatepicker]="picker" placeholder="Start date"
+                formControlName="startDate"  i18n-placeholder="@@Start Date" name="startDate" [(ngModel)]="mRequest.start_date">
+                <mat-datepicker-toggle disabled matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input matInput readonly [matDatepicker]="picker2" placeholder="End date" i18n-placeholder="@@End Date"
+                formControlName="endDate"  name="endDate" [(ngModel)]="mRequest.end_date">
+                <mat-datepicker-toggle disabled matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input matInput [matDatepicker]="DOA" placeholder="DOA" i18n-placeholder="@@DOA" name="DOA"
+                formControlName="doa" [min]="mRequest.start_date" [max]="mRequest.end_date" [(ngModel)]="mRequest.doa">
+                <mat-datepicker-toggle matSuffix [for]="DOA"></mat-datepicker-toggle>
+                <mat-datepicker #DOA></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+          <!-- <div class="col-lg-4">
+          <mat-form-field class="example-full-width">
+            <input type="text" matInput readonly placeholder="Primary Skill" i18n-placeholder="@@Primary Skills"
+              name="primarySkills" aria-label="Number" matInput [(ngModel)]="mRequest.primary_skill">
+            <control-messages class="validation-color" [control]="DataForm.controls.primarySkills" [parent]="'Secondary Skills'"></control-messages>
+
+          </mat-form-field>
+        </div> -->
+        </div>
+
+
+        <div class="row">
+
+          <!-- <div class="col-lg-4">
+          <div class="example-container">
+            <mat-form-field>
+              <input type="text" matInput readonly placeholder="Secondary Skill" i18n-placeholder="@@Secondary Skills"
+                name="secondarySkills" [(ngModel)]="mRequest.secondary_skill">
+              <control-messages class="validation-color" [control]="DataForm.controls.secondarySkills" [parent]="'Secondary Skills'"></control-messages>
+            </mat-form-field>
+          </div>
+        </div> -->
+
+          <div class="col-lg-4">
+            <div class="example-full-width">
+              <mat-form-field>
+                <input matInput [matDatepicker]="plannedReleaseDate" placeholder="Planned Release Date"
+                formControlName="planned_release_date"  i18n-placeholder="@@Planned Release Date" name="ReleaseDate"
+                  [(ngModel)]="mRequest.planned_release_date"  [min]="mRequest.doa" [max]="mRequest.end_date">
+                <mat-datepicker-toggle matSuffix [for]="plannedReleaseDate"></mat-datepicker-toggle>
+                <mat-datepicker #plannedReleaseDate></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-12">
+            <mat-form-field class="example-full-width">
+              <textarea required matInput placeholder="Remark" i18n-placeholder="@@Remark" name="remark"
+              formControlName="remark"  [(ngModel)]="mRequest.remark"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2">
+            <button class="col-sm-12" mat-stroked-button color="primary" type="button" (click)="onSubmit('Approve')"
+            [disabled]="!DSForm.valid" data-dismiss="modal">Approve</button>
+          </div>
+          <div class="col-lg-2">
+            <button class="col-sm-12" mat-raised-button color="secondary" type="button" (click)="onSubmit('Reject')"
+              data-dismiss="modal">Reject</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

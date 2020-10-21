@@ -1,0 +1,17 @@
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+ @font-face {
+  font-family: 'MyriadPro';
+    src: url('../fonts/MyriadProLight.eot') format('embedded-opentype'), 
+  url('../fonts/MyriadProLight.woff') format('woff2'),
+   url('../fonts/MyriadProLight.woff') format('woff'),
+    url('../fonts/MyriadProLight.ttf') format('truetype'),
+     url('../fonts/MyriadProLight.svg') format('svg');
+     /* src: url(assets/MyriadPro/fonts/MyriadProBold.otf) format("opentype"); */
+  font-weight: normal;
+  font-style: normal;
+}

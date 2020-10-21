@@ -1,0 +1,28 @@
+export class Project{
+  id:number
+  code:string
+  name:string
+  description:string
+  city:string
+  area:string
+  country:string
+  manager:string
+  client:string
+  department:string
+  start_date:Date
+  end_date:Date
+  billing_start_date:Date
+  billing_end_date:Date
+  billing_type:string
+  project_value:number
+  currency:string
+  account_owner:string
+  delivery_owner:string
+  finance_owner:string
+  nature:string
+  status:string
+  created_by_id:number
+  created_dtm:Date
+  modified_by_id:number
+  modified_dtm:Date 
+}

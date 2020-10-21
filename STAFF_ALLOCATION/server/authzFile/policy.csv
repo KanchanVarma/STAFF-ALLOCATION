@@ -1,0 +1,14 @@
+
+p, admin,   *,            GET
+p, admin,   /ftp/*,       (GET)|(POST)|(OPTIONS)
+p, admin,   /export/*,       (GET)|(POST)|(OPTIONS)
+p, admin,   /cassandra/*,       (GET)|(POST)|(OPTIONS)
+p, member,  /member,      GET
+p, member,  /member/*,    (GET)|(POST)
+p, member,  /login,    (GET)|(POST)
+p, admin,  /login,    (GET)|(POST)
+
+g, dgupta, member
+g, sringe, member
+g, vjain, admin
+
